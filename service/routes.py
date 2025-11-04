@@ -155,9 +155,6 @@ def get_products(product_id):
 #
 # PLACE YOUR CODE TO UPDATE A PRODUCT HERE
 #
-######################################################################
-# UPDATE AN EXISTING PRODUCT
-######################################################################
 @app.route("/products/<int:product_id>", methods=["PUT"])
 def update_products(product_id):
     """
@@ -176,6 +173,11 @@ def update_products(product_id):
     product.id = product_id
     product.update()
     return product.serialize(), status.HTTP_200_OK
+    
+######################################################################
+# UPDATE AN EXISTING PRODUCT
+######################################################################
+
 
 ######################################################################
 # DELETE A PRODUCT

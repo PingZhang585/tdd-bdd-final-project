@@ -164,10 +164,12 @@ class Product(db.Model):
 
         """
         logger.info("Initializing database")
+        if not hasattr(app, 'db_initialized'):
         # This is where we initialize SQLAlchemy from the Flask app
-        db.init_app(app)
-        app.app_context().push()
-        db.create_all()  # make our sqlalchemy tables
+            db.init_app(app)
+            app.app_context().push()
+            db.create_all()  # make our sqlalchemy tables
+            app.db_initialized = True
 
     @classmethod
     def all(cls) -> list:
